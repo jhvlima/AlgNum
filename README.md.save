@@ -128,38 +128,7 @@ end
 
 I = c * sum(w .* y);
 fprintf("Aproximação da integral (Newton-Cotes grau %d): %.6f\n", n, I);
+
 ```
-
-> Erro de truncamento: diferença entre o valor exato a função e a valor aproximado.
-
 ### Comparação do Erro
-O erro de um método de integração numérica pode ser estimado pela diferença entre a integral exata e a integral aproximada. A seguir, um exemplo de comparação do erro entre a regra do trapézio e a regra de Simpson:
-
-
-```matlab
-f = @(x) sin(x);
-a = 0; b = pi;
-n = 100; % número de subintervalos
-x = linspace(a, b, n+1);
-y = f(x);
-% Integral exata
-I_exata = 2; % Integral de sin(x) de 0 a pi
-% Regra do Trapézio
-h = (b - a) / n;
-I_trapezio = (h/2) * (y(1) + 2*sum(y(2:end-1)) + y(end));
-erro_trapezio = abs(I_exata - I_trapezio);
-fprintf("Erro da Regra do Trapézio: %.6f\n", erro_trapezio);
-% Regra de Simpson
-if mod(n, 2) == 0
-    I_simpson = (h/3) * (y(1) + 2*sum(y(3:2:end-1)) + 4*sum(y(2:2:end)) + y(end));
-    erro_simpson = abs(I_exata - I_simpson);
-    fprintf("Erro da Regra de Simpson: %.6f\n", erro_simpson);
-else
-    fprintf("Número de subintervalos deve ser par para a Regra de Simpson.\n");
-end
-% Visualização dos erros
-xx = linspace(a, b, 1000);
-yy = f(xx);
-plot(xx, yy, 'b-', 'LineWidth', 2); hold on;
-plot(x, y, 'ko-'); % pontos usados
-```
+O erro de um 
